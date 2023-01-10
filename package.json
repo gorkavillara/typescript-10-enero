@@ -1,0 +1,19 @@
+{
+  "name": "typescript-enero",
+  "version": "0.0.1",
+  "description": "Formación de introducción a Typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run execute",
+    "dev": "tsc --watch",
+    "execute": "node dist/index.js",
+    "compile": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "enero",
+    "introduccion"
+  ],
+  "author": "Gorka Villar",
+  "license": "ISC"
+}
