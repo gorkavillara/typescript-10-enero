@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Formación de introducción a Typescript",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "npm run execute",
     "dev": "tsc --watch",
@@ -15,5 +16,11 @@
     "introduccion"
   ],
   "author": "Gorka Villar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0"
+  }
 }
