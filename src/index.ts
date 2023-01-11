@@ -1,6 +1,6 @@
 // CommonJS -> Bastante obsoleto
 // const chalk = require("chalk")
 // ESModules
-import chalk from 'chalk'
+import { menuPrincipal } from './controllers/menuController/index.js'
 
-console.log(chalk.cyan("Hola mundo desde TypeScript"))
+menuPrincipal()
