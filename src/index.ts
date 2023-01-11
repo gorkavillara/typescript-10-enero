@@ -29,13 +29,22 @@ for (let i = 0; i < peliculas.length; i++) {
 }
 
 // function devuelveTitulos(films: Pelicula[]) {
-//     return 
+//     return
 // }
 
 // const titulos: string[] = peliculas.map((pelicula: Pelicula) => {
 //     return pelicula.titulo
 // })
 
-const devuelveTitulos = (films: Pelicula[]) => films.map((pelicula: Pelicula) => pelicula.titulo)
+const ordenaPeliculas = (films: Pelicula[]) =>
+  films.sort((a: Pelicula, b: Pelicula) => (a.anyo > b.anyo ? -1 : 1));
 
-console.log(devuelveTitulos(peliculas))
+const devuelveTitulos = (films: Pelicula[]) => {
+  const peliculasOrdenadas: Pelicula[] = ordenaPeliculas(films);
+  const titulos: string[] = peliculasOrdenadas.map(
+    (pelicula: Pelicula) => pelicula.titulo
+  );
+  return titulos
+};
+
+console.log(devuelveTitulos(peliculas));

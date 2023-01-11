@@ -7,6 +7,7 @@
         {
             "type": "node",
             "request": "launch",
+            "preLaunchTask": "npm: compile",
             "name": "Debug Typescript",
             "skipFiles": [
                 "<node_internals>/**"
@@ -15,7 +16,8 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],
-            "sourceMaps": true
+            "sourceMaps": true,
+            "smartStep": true
         }
     ]
 }
