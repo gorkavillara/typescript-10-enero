@@ -1,5 +1,6 @@
 import inquirer from "inquirer"
 import chalk from 'chalk'
+import { Client } from "../../models/clients.js"
 
 // 1 - Mensaje de bienvenida => console.log + chalk
 // 2 - Pregunta nuestro nombre y lo almacena en una constante => type input
@@ -36,5 +37,11 @@ export const menuPrincipal = async() => {
         }])
         if (option === "5. Salir") return
         console.log(`Opción elegida: ${option}`)
+        if (option === "2. Leer listado de clientes") {
+            // Mostrar los clientes
+            // 1 - Llamamos a la api
+            await Client.getAllClients()
+            // 2 - Mostramos los clientes
+        }
     }
 }

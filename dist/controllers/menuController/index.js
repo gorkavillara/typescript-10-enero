@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import inquirer from "inquirer";
 import chalk from 'chalk';
+import { Client } from "../../models/clients.js";
 // 1 - Mensaje de bienvenida => console.log + chalk
 // 2 - Pregunta nuestro nombre y lo almacena en una constante => type input
 // 3 - Pregunta qué es lo que queremos hacer (EN BUCLE, hasta que le digamos que queremos salir)
@@ -43,5 +44,11 @@ export const menuPrincipal = () => __awaiter(void 0, void 0, void 0, function* (
         if (option === "5. Salir")
             return;
         console.log(`Opción elegida: ${option}`);
+        if (option === "2. Leer listado de clientes") {
+            // Mostrar los clientes
+            // 1 - Llamamos a la api
+            yield Client.getAllClients();
+            // 2 - Mostramos los clientes
+        }
     }
 });
