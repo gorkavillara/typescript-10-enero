@@ -44,6 +44,33 @@ export const menuPrincipal = () => __awaiter(void 0, void 0, void 0, function* (
             }]);
         if (option === "5. Salir")
             return;
+        if (option === "1. Crear nuevo cliente") {
+            // inquirer -> muestra un prompt con la info que queremos introducir
+            const { name, email, address, phone, isActive } = yield inquirer.prompt([{
+                    message: "Nombre del cliente",
+                    name: "name",
+                    type: "input",
+                    default: "Mario Casas"
+                }, {
+                    message: "Email",
+                    name: "email",
+                    type: "input"
+                }, {
+                    message: "Dirección",
+                    name: "address",
+                    type: "input"
+                }, {
+                    message: "Teléfono",
+                    name: "phone",
+                    type: "input"
+                }, {
+                    message: "¿Es un cliente activo?",
+                    name: "isActive",
+                    choices: ["Activo"],
+                    type: "checkbox"
+                }]);
+            console.log({ name, email, address, phone, isActive });
+        }
         if (option === "2. Leer listado de clientes") {
             // Crear el spinner
             // Inicializar el spinner
