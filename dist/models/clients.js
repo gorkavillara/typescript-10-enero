@@ -14,6 +14,7 @@ import axios from "axios";
 import { endpoint } from "../data/index.js";
 export class Client {
     constructor(n, a, p, e) {
+        this.id = "";
         this.isActive = true;
         this.name = n;
         this.address = a;
@@ -26,7 +27,18 @@ export class Client {
                 .get(endpoint)
                 .catch(console.error);
             const rawClients = rawResponse === null || rawResponse === void 0 ? void 0 : rawResponse.data.clientes;
-            console.log(rawClients);
+            const clients = rawClients === null || rawClients === void 0 ? void 0 : rawClients.map((rawClient) => {
+                const { nombre, numero_telefono, direccion, email, id } = rawClient;
+                return {
+                    name: nombre,
+                    phone: numero_telefono,
+                    address: direccion,
+                    email,
+                    id,
+                    isActive: true
+                };
+            });
+            return clients;
         });
     }
 }

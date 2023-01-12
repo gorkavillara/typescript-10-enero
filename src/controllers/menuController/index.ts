@@ -1,5 +1,7 @@
 import inquirer from "inquirer"
 import chalk from 'chalk'
+import { createSpinner } from "nanospinner"
+
 import { Client } from "../../models/clients.js"
 
 // 1 - Mensaje de bienvenida => console.log + chalk
@@ -36,12 +38,26 @@ export const menuPrincipal = async() => {
             name: "option"
         }])
         if (option === "5. Salir") return
-        console.log(`Opción elegida: ${option}`)
         if (option === "2. Leer listado de clientes") {
+            // Crear el spinner
+            // Inicializar el spinner
+            const clientSpinner = createSpinner("Buscando clientes...")
+            clientSpinner.start()
+
             // Mostrar los clientes
             // 1 - Llamamos a la api
-            await Client.getAllClients()
+            const clients: Client[] | undefined = await Client.getAllClients()
+            // Finalizar el spinner
+            clientSpinner.success({ text: "Clientes encontrados con éxito" })
+
             // 2 - Mostramos los clientes
+            clients?.forEach((client: Client, index: number) => {
+                console.log(
+                    chalk.magenta(
+                        `${index + 1}. ${client.name} - ${client.email}`
+                    )
+                )
+            })
         }
     }
 }

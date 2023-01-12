@@ -10,6 +10,7 @@ export class Client {
   address: string;
   phone: string;
   email: string;
+  id: string = "";
   isActive: boolean = true;
 
   constructor(n: string, a: string, p: string, e: string) {
@@ -26,6 +27,17 @@ export class Client {
 
     const rawClients: any[] | undefined = rawResponse?.data.clientes;
 
-    console.log(rawClients);
+    const clients: Client[] | undefined = rawClients?.map((rawClient: any) => {
+        const { nombre, numero_telefono, direccion, email, id } = rawClient
+        return {
+            name: nombre,
+            phone: numero_telefono,
+            address: direccion,
+            email,
+            id,
+            isActive: true
+        }
+    })
+    return clients
   }
 }

@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import inquirer from "inquirer";
 import chalk from 'chalk';
+import { createSpinner } from "nanospinner";
 import { Client } from "../../models/clients.js";
 // 1 - Mensaje de bienvenida => console.log + chalk
 // 2 - Pregunta nuestro nombre y lo almacena en una constante => type input
@@ -43,12 +44,20 @@ export const menuPrincipal = () => __awaiter(void 0, void 0, void 0, function* (
             }]);
         if (option === "5. Salir")
             return;
-        console.log(`Opción elegida: ${option}`);
         if (option === "2. Leer listado de clientes") {
+            // Crear el spinner
+            // Inicializar el spinner
+            const clientSpinner = createSpinner("Buscando clientes...");
+            clientSpinner.start();
             // Mostrar los clientes
             // 1 - Llamamos a la api
-            yield Client.getAllClients();
+            const clients = yield Client.getAllClients();
+            // Finalizar el spinner
+            clientSpinner.success({ text: "Clientes encontrados con éxito" });
             // 2 - Mostramos los clientes
+            clients === null || clients === void 0 ? void 0 : clients.forEach((client, index) => {
+                console.log(chalk.magenta(`${index + 1}. ${client.name} - ${client.email}`));
+            });
         }
     }
 });
