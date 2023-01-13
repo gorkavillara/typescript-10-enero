@@ -1,6 +1,6 @@
 import inquirer from "inquirer"
 import chalk from "chalk"
-import { createSpinner } from "nanospinner"
+import { createSpinner } from 'nanospinner'
 
 import { Client } from "../../models/clients.js"
 
