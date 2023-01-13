@@ -8,7 +8,9 @@
     "start": "npm run execute",
     "dev": "tsc --watch",
     "execute": "node dist/index.js",
-    "compile": "tsc"
+    "compile": "tsc",
+    "lint": "eslint src/**",
+    "lint:fix": "eslint --fix src/**"
   },
   "keywords": [
     "typescript",
@@ -26,6 +28,13 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/chalk": "^2.2.0",
-    "@types/inquirer": "^9.0.3"
+    "@types/inquirer": "^9.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
