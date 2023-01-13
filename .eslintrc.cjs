@@ -16,7 +16,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    quotes: ["warn", "double"]
+    quotes: ["warn", "double"],
+    "space-before-function-paren": ["error", "never"]
   }
 }
 

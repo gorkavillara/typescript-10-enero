@@ -1,3 +1,5 @@
+/* eslint-disable camelcase, no-unused-vars */
+
 // 1 - Relacionados con el framework o el entorno de ejecución (Node)
 // 2 - Librerías de terceros
 // 3 - Componentes propios
@@ -13,14 +15,14 @@ export class Client {
   id: string = ""
   isActive: boolean = true
 
-  constructor (n: string, a: string, p: string, e: string) {
+  constructor(n: string, a: string, p: string, e: string) {
     this.name = n
     this.address = a
     this.phone = p
     this.email = e
   }
 
-  static async getAllClients () {
+  static async getAllClients() {
     const rawResponse: void | AxiosResponse<any, any> = await axios
       .get(endpoint)
       .catch(console.error)
@@ -28,10 +30,11 @@ export class Client {
     const rawClients: any[] | undefined = rawResponse?.data.clientes
 
     const clients: Client[] | undefined = rawClients?.map((rawClient: any) => {
+      // eslint-disable-next-line camelcase
       const { nombre, numero_telefono, direccion, email, id } = rawClient
       return {
         name: nombre,
-        phone: numero_telefono,
+        phone: numero_telefono, // eslint-disable-line camelcase
         address: direccion,
         email,
         id,
